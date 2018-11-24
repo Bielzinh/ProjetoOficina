@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title><ui:insert name="titulo">Cadastro de Servicos</ui:insert></title>
+	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+	<link rel="stylesheet" type="text/css" href="css/estilo.css" />
+
+</h:head>
+<h:body>
+               
+              
+	<p:panel align="center" style=" border:2px solid #87cefa;">
+	
+	<h:form id="forma" prependId="false">
+	
+	<p:panel style=" border:2px solid #87cefa;">
+	<h1 style="color:#87cefa;"> Cadastro de Servicos</h1>
+	<hr size="2" color="#87cefa">
+</hr>	
+	
+		</p:panel>		
+		<br/>
+	</h:form>
+	
+	<h:form id="form" prependId="false">
+			<ui:remove>
+<f:metadata>
+		<f:event type="postAddToView" listener="#{oficinaMB.lerOficina}" />
+	</f:metadata>
+	</ui:remove>
+			
+	
+			<br/>
+			
+<h2 style="color:#87cefa;"> Bem Vindo : <h:outputText value="#{loginMB.usuario.nome}" style="color:red;"/></h2>
+		
+			<p:fieldset style=" border:2px solid #87cefa;">
+
+							
+				<p:panelGrid columns="2" style=" border:2px solid #87cefa;">
+				
+				<p:outputLabel for="tiposervico" value=" Serviço : "/>
+				<p:inputText id="tiposervico" value="#{oficinaMB.oficina.tiposervico}"/>
+			    
+			    <p:outputLabel for="valorservico" value=" Valor : "/>
+			   	<p:inputText id="valorservico" value="#{oficinaMB.oficina.valorservico}"/>
+			   
+			<p:commandButton ajax="false" value="Salvar" action="#{oficinaMB.acaoSalvar}">
+			<f:param name="codParam" value="#{oficinaMB.oficina.codigo}" />
+			
+			</p:commandButton>
+			</p:panelGrid>
+				
+			</p:fieldset>
+						<br/>
+
+			
+	<p:fieldset style=" border:2px solid #87cefa;">
+			
+<p:outputLabel style="color:#87cefa; font-size: 20px;"
+					value="Serviços Cadastrados" />	
+	<hr size="2" color="#87cefa">
+</hr>								
+			<p:dataTable id="tabela" value="#{oficinaMB.oficinas}" var="ofic"
+			rows="4" paginator="true" rowsPerPageTemplate="5,10,15">
+			<p:column>
+				<f:facet name="header">Opções</f:facet>
+					<p:commandButton image="ui-icon-pencil" immediate="true" ajax="false"
+						action="#{oficinaMB.acaoAbrirAlteracao(ofic.codigo)}" />
+						
+						<p:growl id="message" showDetail="true" />
+ 
+ 
+ 
+    <p:commandButton immediate="true" image="ui-icon-close"  onclick="PF('dlg1').show();" />
+   
+ 
+   
+						
+	<p:dialog header="Deseja Excluir" widgetVar="dlg1" minHeight="40">
+	    <p:commandButton immediate="true" value="YES"  onclick="PF('dlg1').show();" action="#{oficinaMB.acaoExcluir(ofic.codigo)}"/>
+		<p:commandButton immediate="true" value="NO"  onclick="PF('dlg1').show();" action="#{oficinaMB.acaoListar}"/>
+	
+</p:dialog>		
+					
+					
+			</p:column>
+			
+				<p:column>
+				<f:facet name="header">Tipo de Serviço</f:facet>
+				<h:outputText value="#{ofic.tiposervico}"></h:outputText>
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">Valor do Serviço</f:facet>
+				<h:outputText value="#{ofic.valorservico}"></h:outputText>
+			</p:column>
+</p:dataTable>
+
+
+			</p:fieldset>
+							</h:form>
+							
+							<br/>
+							
+						
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+	<f:facet name="footer"  >
+		<div >
+	
+	            <div align="center">
+				<h:outputText style="color:#87cefa; font-size: 15px;" value="Copyright&copy; 2018  - Trabalho do Thiago"></h:outputText>
+				</div>
+				
+				
+                                <h:outputText value="Usuário: " style="color:red;"/>
+	<h:outputText style="color:red;" value="#{loginMB.usuario.nome}"></h:outputText>
+                     <div align="right"> <a href="http://hibernate.org/" target="blank"><p:graphicImage  style="float:right;height:40px; width:40px;" url="img/hibernate.png" 
+					></p:graphicImage></a></div>
+					<div align="right"> <a href="http://tomcat.apache.org/" target="blank"><p:graphicImage style="float:right; height:40px; width:40px;" url="img/download.jpg" 
+					></p:graphicImage></a></div>
+					<div align="right"> <a href="http://www.oracle.com/technetwork/java/index.html" target="blank"><p:graphicImage  style="float:right; height:40px; width:40px;" url="img/java.png"  
+					></p:graphicImage></a></div>
+					<div align="right"> <a href="https://www.primefaces.org/" target="blank"><p:graphicImage   url="img/a.jpg" style="height:40px; width:40px;"
+					></p:graphicImage></a></div>
+					
+					
+					
+				</div>
+			</f:facet>
+		</p:panel>
+
+			
+
+	
+</h:body>
+</html>
+
+

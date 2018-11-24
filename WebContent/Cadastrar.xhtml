@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<link rel="stylesheet" href="css/estilo.css" />
+	<meta http-equiv="Content-Type"
+		content="text/html;  charset=ISO-8859-1" />
+	<title><ui:insert name="titulo">Cadastro de Usuários</ui:insert></title>
+</h:head>
+
+<h:body>
+
+
+	<p:panel>
+
+		<div align="center">
+			<h1 style="text-align: center; color: #87cefa;">Cadastro de
+				Usuários</h1>
+			<hr size="2"></hr>
+
+		</div>
+		
+		<h1 style=" color: #87cefa;">Dados Pessoais</h1>
+			<hr size="2"></hr>
+		<h:form>
+			<p:panelGrid columns="2">
+				<p:outputLabel for="nome" value="Nome" placeholder="Digite seu nome" />
+				<p:inputText id="nome" value="#{loginMB.user.nome}" />
+
+				<p:outputLabel for="email" value="Email"
+					placeholder="Digite seu email" />
+				<p:inputText id="email" value="#{loginMB.user.email}" />
+
+				<p:outputLabel for="login" value="Login"
+					placeholder="Digite seu Login" />
+				<p:inputText id="login" value="#{loginMB.user.login}" />
+
+
+				<p:outputLabel for="senha" value="Senha"
+					placeholder="Digite sua Senha" />
+				<p:inputText id="senha" value="#{loginMB.user.senha}" />
+
+				
+			</p:panelGrid>
+			<h1 style=" color: #87cefa;">Endereço</h1>
+			<hr size="2"></hr>
+			<p:panelGrid columns="4">
+			<p:outputLabel for="rua" value="Rua:"></p:outputLabel>
+		    <p:inputText id="rua" value="#{loginMB.user.rua}" style="width:200px;" placeholder="Ex: Seabra Sobrinho"></p:inputText>
+			
+			<p:outputLabel for="bairro" value="Bairro:"></p:outputLabel>
+			<p:inputText id="bairro" value="#{loginMB.user.bairro}"></p:inputText>
+			
+			<p:outputLabel for="cep" value="Cep:"></p:outputLabel>
+			<p:inputText id="cep" value="#{loginMB.user.cep}"></p:inputText>
+			
+			
+			<p:outputLabel for="numero" value="Nº:"></p:outputLabel>
+			<p:inputText id="numero" value="#{loginMB.user.numero}"></p:inputText>
+			
+			
+				<p:outputLabel for="cidade" value="Cidade:"></p:outputLabel>
+			<p:inputText id="cidade" value="#{loginMB.user.cidade}"></p:inputText>
+			
+				<p:outputLabel for="uf" value="Uf:"></p:outputLabel>
+			<p:inputText id="uf" value="#{loginMB.user.uf}"></p:inputText>
+			
+			<p:commandButton value="Cadastrar" action="#{loginMB.acaoSalvar}"
+					ajax="false" style="color:#87cefa;" />
+				<p:commandButton value="Voltar" action="#{loginMB.retornar}"
+					style="color:#87cefa;" />
+			</p:panelGrid>
+			
+			
+
+		</h:form>
+		<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+		<f:facet name="footer" style="background-color:#87cefa;">
+			<div align="center">
+
+				<h:outputText
+					style="text-align:center; color:#87cefa; font-size: 15px;"
+					value="Copyright&copy; 2017 - Gabriel Fernando"></h:outputText>
+				<br />
+				<h:outputLink style="color:red;"
+					value="https://www.facebook.com/gabriel.fernando.16" target="blank">Meu Facebook</h:outputLink>
+
+
+			</div>
+		</f:facet>
+
+	</p:panel>
+
+
+</h:body>
+</html>
